@@ -8,3 +8,5 @@ Mostly Oauth 2.0 follows below three steps.
 2. After successful authorization on the third party app, that app will redirectt with pre defined url.
 3. Your application handles that redircet url and make another call to API to fetch acess token
    based on response code from above redircet call.
+
+   https://www.honeybadger.io/blog/oauth-nodejs-javascript/
