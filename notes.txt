@@ -1,0 +1,10 @@
+Oauth 2.0 is an industry standard protocal for authorization. This protocal provides
+bunch of tools, patterns and best practices to integrate the authorization flows for 
+web, desktop applications and mobile phones, and living room devices.
+
+Mostly Oauth 2.0 follows below three steps.
+
+1. Your application opens up window with third party login for authorization.
+2. After successful authorization on the third party app, that app will redirectt with pre defined url.
+3. Your application handles that redircet url and make another call to API to fetch acess token
+   based on response code from above redircet call.
