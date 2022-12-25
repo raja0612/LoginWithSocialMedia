@@ -10,7 +10,7 @@ app.use(cors({ credentials: true, origin: true }));
 
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
-const GITHUB_URL = process.env.GITHUB_URL;
+const GITHUB__ACCESS_TOKEN_URL = process.env.GITHUB__ACCESS_TOKEN_URL;
 const PORT = 8080;
 
 /*
@@ -25,13 +25,13 @@ http://localhost:8080/oauth/redirect
 app.get("/oauth/redirect", (req, res) => {
     axios({
       method: "POST",
-      url: `${GITHUB_URL}?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&code=${req.query.code}`,
+      url: `${GITHUB__ACCESS_TOKEN_URL}?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&code=${req.query.code}`,
       headers: {
         Accept: "application/json",
       },
     }).then((response) => {
         console.log(response);
-      res.redirect(
+        res.redirect(
         `http://localhost:3000?access_token=${response.data.access_token}`
       );
     });
