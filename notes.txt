@@ -10,3 +10,30 @@ Mostly Oauth 2.0 follows below three steps.
    based on response code from above redircet call.
 
    https://www.honeybadger.io/blog/oauth-nodejs-javascript/
+
+
+
+
+Step 1 :
+  1.Create Github APP https://github.com/settings/applications/new, important is Authorization callback URL(this is our app url).
+  2. It creates Client ID and Client Secret.
+
+
+Step 2: (Server Project)
+   1. Create Server project and handle above routing url endpiont.
+   2. After user successful authentication on github, github calls above configured redirect url.
+   3. In our server application,from this redirect url, we will call
+     https://github.com/login/oauth/access_token&client_secret=${CLIENT_SECRET}&code=${req.query.code}`
+     req.query.code ==github will pass us
+   4. Above endpioint gets access_token.
+   5.  Here we redirect to UI with access_token
+   
+   
+   
+Step 3. Client project
+     1. Create React APP with Login component with button.
+     2. Button click handles below url call
+https://github.com/login/oauth/authorize?client_id=your configure client id in step1&redirect_uri=this should match whateveer configure in step1.
+     3.When button clicks, user go to github page and authenticate there, if success, then Github calls server redirect endpoint and from there get access token from github and pass it to ui application with ui redirect uri and access_token as query param.
+     
+  
